@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Check your Loan Eligibility</title>
+</head>
+
+<style>
+
+input[type=number], select {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 30%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+}
+
+div {
+
+  text-align:left;
+}
+
+h1
+{
+	padding-left:100px;
+	font-size:300%;
+	text-align:left;
+	color:DodgerBlue;
+}
+
+h2
+{
+	padding-left:150px;
+	text-align:left;
+	color:DarkBlue;
+	}
+</style>
+
+  <body style="background-repeat:no-repeat;background-size:1550px 750px" background="{{url_for('static', filename='ml.jpg') }}">
+  
+  <h1> <i> Loan Eligibility </i> </h1>
+  
+  <h2> Easy.Fast.Efficient. </h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+     <div style="padding-top:40px;padding-left:40px;">
+    <form action="{{ url_for('predict')}}"method="post">
+	  <input type="number" name="applicantincome" placeholder="Applicant Income" required="required" /><br>
+      <input type="number" name="coapplicantincome" placeholder="CoApplicant Income" required="required" /><br>
+      <input type="number" name="loanamount" placeholder="Loan Amount" required="required" /><br>
+      <input type="number" name="loanamounterm" placeholder="Term" required="required" /><br>
+      <input type="number" name="credithistory" placeholder="Credit History" required="required" /><br>
+      <input type="submit" value="PREDICT"></input>
+    </form>
+  </div>
+
+   <br>
+   <br>
+   <div style="text-align:left;padding-left:30px;font-size:120%;color:DarkBlue;"> <b> {{ prediction_text }} </b> </div>
+   <div style="padding-top:20px;text-align:left;padding-left:140px;font-size:120%;"> <a href="{{url_for('emi') }}" style="text-decoration:none;color:DarkBlue"> <b> Check your Monthly EMI </b> </a> </div> 
+
+
+</body>
+</html>
